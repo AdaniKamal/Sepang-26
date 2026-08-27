@@ -24,7 +24,7 @@ A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project
 - Mobile-first race weekend homepage
 - Fan-made Sepang circuit redraw
 - Interactive Turn 1–15 circuit notes
-- **MET Malaysia / data.gov.my Sepang forecast
+- MET Malaysia / data.gov.my Sepang forecast
 - 7-day weather outlook in a swipeable carousel
 - Morning, afternoon and night forecast
 - Relevant Selangor / Sepang weather warning detection
