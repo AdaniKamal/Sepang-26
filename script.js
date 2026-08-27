@@ -382,10 +382,42 @@ async function loadSepangWeather() {
       throw new Error("No Sepang forecast rows returned");
     }
 
+    // The API can return multiple Sepang rows for the same date.
+    // Deduplicate by calendar date so the fan UI always shows ONE card per day.
     forecasts.sort((a,b) => String(a.date).localeCompare(String(b.date)));
-    latestSepangForecast = forecasts[0];
 
-    const today = forecasts[0];
+    const uniqueByDate = new Map();
+    for (const row of forecasts) {
+      if (!row?.date) continue;
+
+      if (!uniqueByDate.has(row.date)) {
+        uniqueByDate.set(row.date, row);
+        continue;
+      }
+
+      // Prefer the row with more populated forecast fields if duplicates exist.
+      const current = uniqueByDate.get(row.date);
+      const score = obj => [
+        obj.summary_forecast,
+        obj.summary_when,
+        obj.morning_forecast,
+        obj.afternoon_forecast,
+        obj.night_forecast,
+        obj.min_temp,
+        obj.max_temp
+      ].filter(v => v !== null && v !== undefined && v !== "").length;
+
+      if (score(row) > score(current)) uniqueByDate.set(row.date, row);
+    }
+
+    const dailyForecasts = Array.from(uniqueByDate.values())
+      .sort((a,b) => String(a.date).localeCompare(String(b.date)));
+
+    if (!dailyForecasts.length) throw new Error("No usable Sepang forecast rows returned");
+
+    latestSepangForecast = dailyForecasts[0];
+
+    const today = dailyForecasts[0];
     document.getElementById("weatherTemp").textContent = `${today.max_temp ?? "--"}°`;
     document.getElementById("weatherRange").textContent = `${today.min_temp ?? "--"}° MIN / ${today.max_temp ?? "--"}° MAX`;
     document.getElementById("weatherSummary").textContent = englishWeather(today.summary_forecast);
@@ -395,7 +427,7 @@ async function loadSepangWeather() {
     document.getElementById("weatherIcon").textContent = weatherIconFor(today.summary_forecast);
     document.getElementById("weatherUpdated").textContent = `FORECAST DATE ${formatForecastDate(today.date).date}`;
 
-    const display = forecasts.slice(0,7);
+    const display = dailyForecasts.slice(0,7);
     const localToday = new Intl.DateTimeFormat("en-CA", {
       timeZone:"Asia/Kuala_Lumpur",
       year:"numeric", month:"2-digit", day:"2-digit"
