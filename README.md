@@ -33,3 +33,14 @@ No backend or database is required for this version.
 The race schedule, circuit details, transport, venue facilities, weather and any official event information should be verified against official sources before final submission.
 
 This prototype intentionally avoids official F1 logos, team logos and copied Formula 1 UI.
+
+
+## V2 visual direction
+Changed from the previous acid-green tech palette to a Sepang-specific sunrise/race-heat palette:
+- deep racing red
+- hot orange
+- sunrise amber
+- warm cream
+- dark asphalt
+
+This is intended to visually separate SEPANG//26 from the portfolio aesthetic.
