@@ -22,12 +22,12 @@ A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project
 - Mobile-first race weekend homepage
 - Fan-made Sepang circuit redraw
 - Interactive Turn 1–15 circuit notes
-- **MET Malaysia / data.gov.my Sepang forecast**
-- **7-day weather outlook in a swipeable carousel**
-- **Morning, afternoon and night forecast**
-- **Relevant Selangor / Sepang weather warning detection**
-- **Fan Ready guidance based on forecast conditions**
-- **Send current weather scenario into Strategy Lab**
+- MET Malaysia / data.gov.my Sepang forecast
+- 7-day weather outlook in a swipeable carousel
+- Morning, afternoon and night forecast
+- Relevant Selangor / Sepang weather warning detection
+- Fan Ready guidance based on forecast conditions
+- Send current weather scenario into Strategy Lab
 - Fan strategy simulator
 - Beginner-friendly F1 explainer
 - Malaysia-specific heat, rain, walking and connectivity guidance
@@ -76,30 +76,6 @@ If the API is unavailable:
 - the weather module displays an unavailable state;
 - generic Malaysia race-day preparation guidance remains visible.
 
-## Run locally
-
-For reliable API requests, serve the project through a local web server rather than opening the HTML file directly:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then visit:
-
-```text
-http://localhost:8000
-```
-
-## Deploy
-
-This version remains frontend-only and can be deployed to:
-
-- Vercel
-- Netlify
-- GitHub Pages
-
-For production, confirm browser CORS behaviour from the final deployment origin. If the API later requires server-side proxying or caching, a lightweight serverless route can be added.
-
 ## Project notes
 
 The circuit illustration is an original fan-made redraw intended to evoke the recognizable Sepang layout. It is not an official circuit map asset.
@@ -107,7 +83,6 @@ The circuit illustration is an original fan-made redraw intended to evoke the re
 Before final bounty submission, race session times, transport, venue facilities and other event-specific information should be validated against authoritative sources.
 
 The project intentionally avoids official Formula 1 logos, team logos and copied Formula 1 UI.
-
 
 ## Circuit reference correction
 
