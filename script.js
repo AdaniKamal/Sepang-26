@@ -636,3 +636,90 @@ document.querySelectorAll(".hotspot").forEach(marker => {
 });
 
 renderTurnInfo("turn1");
+
+// ===== V11: Race Day Companion =====
+function updateRaceDayClock() {
+  const el = document.getElementById("raceDayClock");
+  if (!el) return;
+  el.textContent = new Intl.DateTimeFormat("en-GB", {
+    timeZone:"Asia/Kuala_Lumpur",
+    hour:"2-digit",
+    minute:"2-digit",
+    hour12:false
+  }).format(new Date());
+}
+
+function updateRaceDayCountdownSummary() {
+  const el = document.getElementById("rdCountdown");
+  if (!el) return;
+  const diff = D1_TARGET.getTime() - Date.now();
+  if (diff <= 0) {
+    el.textContent = "D-1 IS HERE";
+    return;
+  }
+  const totalHours = Math.floor(diff / 3600000);
+  const days = Math.floor(totalHours / 24);
+  const hours = totalHours % 24;
+  el.textContent = `${days}D ${hours}H`;
+}
+
+function syncRaceDayWeather() {
+  const summary = document.getElementById("weatherSummary")?.textContent || "Weather unavailable";
+  const range = document.getElementById("weatherRange")?.textContent || "";
+  const rdWeather = document.getElementById("rdWeather");
+  const rdWeatherDetail = document.getElementById("rdWeatherDetail");
+  if (rdWeather) rdWeather.textContent = summary;
+  if (rdWeatherDetail) rdWeatherDetail.textContent = range || "MET Malaysia via data.gov.my";
+
+  const fanTitle = document.getElementById("fanReadyTitle")?.textContent;
+  const fanItems = document.querySelectorAll("#fanReadyItems span");
+  if (fanTitle) document.getElementById("rdFanReadyTitle").textContent = fanTitle;
+  if (fanItems.length) {
+    document.getElementById("rdFanItems").innerHTML =
+      Array.from(fanItems).map(x => `<span>${x.textContent}</span>`).join("");
+  }
+
+  const weatherAlert = document.getElementById("weatherAlert");
+  const warningActive = weatherAlert && !weatherAlert.hidden;
+  document.getElementById("rdWarningStatus").textContent = warningActive ? "ACTIVE" : "NONE";
+  document.getElementById("rdForecastStatus").textContent =
+    summary.toLowerCase().includes("unavailable") ? "OFFLINE" : "CONNECTED";
+}
+
+function updateNextRaceDayMilestone() {
+  const now = Date.now();
+  const milestones = [
+    {label:"FRIDAY · PRACTICE DAY", date:new Date("2026-10-02T00:00:00+08:00")},
+    {label:"SATURDAY · QUALIFYING DAY", date:new Date("2026-10-03T00:00:00+08:00")},
+    {label:"SUNDAY · RACE DAY", date:new Date("2026-10-04T00:00:00+08:00")}
+  ];
+  const next = milestones.find(x => x.date.getTime() > now);
+  const title = document.getElementById("rdNext");
+  const detail = document.getElementById("rdNextDetail");
+  if (!title || !detail) return;
+
+  if (!next) {
+    title.textContent = "RACE WEEKEND";
+    detail.textContent = "Check official event timing for the latest session schedule.";
+    return;
+  }
+
+  title.textContent = next.label;
+  const diff = next.date.getTime() - now;
+  const totalHours = Math.floor(diff / 3600000);
+  const days = Math.floor(totalHours / 24);
+  const hours = totalHours % 24;
+  detail.textContent = days > 0 ? `In ${days}d ${hours}h` : `In ${hours}h`;
+}
+
+updateRaceDayClock();
+updateRaceDayCountdownSummary();
+updateNextRaceDayMilestone();
+
+setInterval(updateRaceDayClock, 30000);
+setInterval(updateRaceDayCountdownSummary, 60000);
+setInterval(updateNextRaceDayMilestone, 60000);
+
+setTimeout(syncRaceDayWeather, 1600);
+setTimeout(syncRaceDayWeather, 4000);
+setInterval(syncRaceDayWeather, 60000);

@@ -1014,3 +1014,164 @@ footer span{font-family:"IBM Plex Mono";font-size:9px}
     min-height:42px;
   }
 }
+
+/* V11 — Race Day Companion */
+.race-day{
+  background:
+    radial-gradient(circle at 86% 10%, rgba(255,107,0,.13), transparent 28%),
+    linear-gradient(180deg,#0d0907,#090909);
+}
+.race-day-dashboard{
+  display:grid;
+  grid-template-columns:minmax(0,1.7fr) minmax(280px,.7fr);
+  gap:12px;
+}
+.race-day-main,.race-day-side .side-panel{
+  border:1px solid var(--line);
+  background:#111;
+}
+.race-day-main{padding:24px}
+.race-day-topline{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+  padding-bottom:20px;
+  border-bottom:1px solid var(--line);
+}
+.race-day-topline h3{
+  margin-top:8px;
+  font-family:"Archivo Black";
+  font-size:clamp(34px,4vw,58px);
+}
+.race-day-topline p{
+  margin:5px 0 0;
+  color:var(--muted);
+  font-family:"IBM Plex Mono";
+  font-size:10px;
+}
+.race-day-clock{text-align:right}
+.race-day-clock span{
+  display:block;
+  color:var(--orange);
+  font-family:"IBM Plex Mono";
+  font-size:9px;
+}
+.race-day-clock strong{
+  display:block;
+  margin-top:6px;
+  font-family:"Archivo Black";
+  font-size:34px;
+}
+.race-day-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+.race-day-card{
+  min-height:170px;
+  padding:18px;
+  border:1px solid var(--line);
+  background:#151515;
+  display:flex;
+  flex-direction:column;
+}
+.race-day-card.urgent{
+  background:linear-gradient(145deg,rgba(255,176,0,.18),rgba(255,59,22,.10));
+  border-color:rgba(255,176,0,.45);
+}
+.rd-kicker{
+  color:var(--orange);
+  font-family:"IBM Plex Mono";
+  font-size:9px;
+  letter-spacing:.8px;
+}
+.race-day-card strong{
+  margin-top:28px;
+  font-family:"Archivo Black";
+  font-size:28px;
+  line-height:1.05;
+}
+.race-day-card p{
+  margin-top:auto;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+}
+.race-day-alert{
+  margin-top:10px;
+  padding:18px;
+  border:1px solid var(--line);
+  background:#0e0e0e;
+  display:grid;
+  grid-template-columns:.55fr 1.45fr;
+  gap:20px;
+  align-items:center;
+}
+.race-day-alert strong{
+  display:block;
+  margin-top:7px;
+  font-size:16px;
+}
+.rd-fan-items{display:flex;flex-wrap:wrap;gap:8px}
+.rd-fan-items span{
+  padding:8px 10px;
+  border:1px solid #383838;
+  font-family:"IBM Plex Mono";
+  font-size:9px;
+}
+.race-day-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.2fr;
+  gap:8px;
+  margin-top:10px;
+}
+.race-day-side{
+  display:grid;
+  gap:12px;
+  align-content:start;
+}
+.side-panel{padding:20px}
+.status-list{
+  margin-top:16px;
+  display:grid;
+  gap:1px;
+  background:var(--line);
+}
+.status-list div{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  background:#111;
+  padding:12px 0;
+}
+.status-list span{color:var(--muted);font-size:11px}
+.status-list strong{
+  font-family:"IBM Plex Mono";
+  font-size:10px;
+}
+.side-panel h3{
+  margin:16px 0 8px;
+  font-family:"Archivo Black";
+  font-size:26px;
+}
+.side-panel p{
+  color:var(--muted);
+  line-height:1.6;
+  font-size:13px;
+}
+@media(max-width:900px){
+  .race-day-dashboard{grid-template-columns:1fr}
+  .race-day-side{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .race-day-main{padding:16px}
+  .race-day-topline{align-items:flex-end}
+  .race-day-clock strong{font-size:26px}
+  .race-day-grid{grid-template-columns:1fr}
+  .race-day-card{min-height:145px}
+  .race-day-alert{grid-template-columns:1fr}
+  .race-day-actions{grid-template-columns:1fr}
+  .race-day-side{grid-template-columns:1fr}
+}

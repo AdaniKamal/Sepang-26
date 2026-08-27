@@ -22,6 +22,7 @@
   <nav class="mobile-nav" id="mobileNav">
     <a href="#home">Race Hub</a>
     <a href="#weather">Weather</a>
+    <a href="#race-day">Race Day</a>
     <a href="#circuit">Circuit</a>
     <a href="#strategy">Strategy Lab</a>
     <a href="#rookie">First Timer</a>
@@ -136,6 +137,95 @@
           <span>Loading weather guidance</span>
         </div>
         <button class="btn btn-primary" id="useWeatherStrategy" type="button">USE IN STRATEGY LAB</button>
+      </div>
+    </section>
+
+    <section class="race-day section-shell" id="race-day">
+      <div class="section-head compact">
+        <div>
+          <div class="eyebrow">RACE DAY MODE</div>
+          <h2>ONE SCREEN.<br>WHAT MATTERS NOW.</h2>
+        </div>
+        <p>A phone-first companion for fans at Sepang with countdown, weather, next race-weekend milestone, fan-ready reminders and fast access to the circuit and strategy tools.</p>
+      </div>
+
+      <div class="race-day-dashboard">
+        <div class="race-day-main">
+          <div class="race-day-topline">
+            <div>
+              <div class="card-label">SEPANG INTERNATIONAL CIRCUIT</div>
+              <h3>RACE WEEKEND</h3>
+              <p>02–04 OCT 2026</p>
+            </div>
+            <div class="race-day-clock">
+              <span>MYT</span>
+              <strong id="raceDayClock">--:--</strong>
+            </div>
+          </div>
+
+          <div class="race-day-grid">
+            <article class="race-day-card urgent">
+              <span class="rd-kicker">D-1 COUNTDOWN</span>
+              <strong id="rdCountdown">--</strong>
+              <p>Until 1 October 2026, 00:00 MYT.</p>
+            </article>
+
+            <article class="race-day-card">
+              <span class="rd-kicker">WEATHER NOW</span>
+              <strong id="rdWeather">Loading...</strong>
+              <p id="rdWeatherDetail">MET Malaysia via data.gov.my</p>
+            </article>
+
+            <article class="race-day-card">
+              <span class="rd-kicker">NEXT</span>
+              <strong id="rdNext">Race weekend</strong>
+              <p id="rdNextDetail">Checking the next race-weekend day.</p>
+            </article>
+
+            <article class="race-day-card">
+              <span class="rd-kicker">TRACK WATCH</span>
+              <strong>T1 + T15</strong>
+              <p>Opening braking zone and final-corner exit back onto the main straight.</p>
+            </article>
+          </div>
+
+          <div class="race-day-alert">
+            <div>
+              <span class="rd-kicker">FAN READY</span>
+              <strong id="rdFanReadyTitle">DEFAULT PREP</strong>
+            </div>
+            <div class="rd-fan-items" id="rdFanItems">
+              <span>HYDRATE</span>
+              <span>PACK A PONCHO</span>
+              <span>PROTECT ELECTRONICS</span>
+            </div>
+          </div>
+
+          <div class="race-day-actions">
+            <a href="#weather" class="btn btn-ghost">CHECK WEATHER</a>
+            <a href="#circuit" class="btn btn-ghost">OPEN CIRCUIT</a>
+            <a href="#strategy" class="btn btn-primary">OPEN STRATEGY LAB</a>
+          </div>
+        </div>
+
+        <aside class="race-day-side">
+          <div class="side-panel">
+            <div class="card-label">QUICK STATUS</div>
+            <div class="status-list">
+              <div><span>Forecast</span><strong id="rdForecastStatus">CHECKING</strong></div>
+              <div><span>Warnings</span><strong id="rdWarningStatus">CHECKING</strong></div>
+              <div><span>Race weekend</span><strong>02–04 OCT</strong></div>
+              <div><span>Timezone</span><strong>MYT · UTC+8</strong></div>
+            </div>
+          </div>
+
+          <div class="side-panel">
+            <div class="card-label">BEGINNER MODE</div>
+            <h3>FIRST F1 WEEKEND?</h3>
+            <p>Use the First Timer section for DRS, qualifying, tyres and Sepang weather basics.</p>
+            <a href="#rookie" class="btn btn-ghost full">OPEN FIRST TIMER</a>
+          </div>
+        </aside>
       </div>
     </section>
 
