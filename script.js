@@ -261,3 +261,208 @@ document.getElementById("shareCard").addEventListener("click", async () => {
   setTimeout(() => URL.revokeObjectURL(url), 1500);
   alert("Direct social sharing is not supported by this browser, so the PNG was downloaded instead.");
 });
+
+
+// ===== V5: MET Malaysia via data.gov.my =====
+const WEATHER_API = "https://api.data.gov.my/weather/forecast";
+const WARNING_API = "https://api.data.gov.my/weather/warning";
+const SEPANG_FILTER = "?contains=Sepang@location__location_name";
+const RACE_DATES = new Set(["2026-10-02","2026-10-03","2026-10-04"]);
+
+let latestSepangForecast = null;
+
+function weatherKind(text="") {
+  const s = String(text).toLowerCase();
+  if (s.includes("ribut petir")) return "storm";
+  if (s.includes("hujan")) return "rain";
+  if (s.includes("jerebu")) return "haze";
+  if (s.includes("tiada hujan")) return "dry";
+  return "mixed";
+}
+
+function weatherIconFor(text="") {
+  const kind = weatherKind(text);
+  if (kind === "storm") return "⛈";
+  if (kind === "rain") return "☂";
+  if (kind === "haze") return "≋";
+  if (kind === "dry") return "☀";
+  return "◐";
+}
+
+function englishWeather(text="") {
+  const exact = {
+    "Tiada hujan":"No rain",
+    "Hujan":"Rain",
+    "Hujan di beberapa tempat":"Scattered rain",
+    "Hujan di satu dua tempat":"Isolated rain",
+    "Hujan di satu dua tempat di kawasan pantai":"Isolated rain over coastal areas",
+    "Hujan di satu dua tempat di kawasan pedalaman":"Isolated rain over inland areas",
+    "Ribut petir":"Thunderstorms",
+    "Ribut petir di beberapa tempat":"Scattered thunderstorms",
+    "Ribut petir di beberapa tempat di kawasan pedalaman":"Scattered thunderstorms over inland areas",
+    "Ribut petir di satu dua tempat":"Isolated thunderstorms",
+    "Ribut petir di satu dua tempat di kawasan pantai":"Isolated thunderstorms over coastal areas",
+    "Ribut petir di satu dua tempat di kawasan pedalaman":"Isolated thunderstorms over inland areas",
+    "Berjerebu":"Hazy"
+  };
+  return exact[text] || text || "Forecast unavailable";
+}
+
+function englishWhen(text="") {
+  const map = {
+    "Pagi":"Morning","Petang":"Afternoon","Malam":"Night",
+    "Pagi dan Petang":"Morning & afternoon",
+    "Pagi dan Malam":"Morning & night",
+    "Petang dan Malam":"Afternoon & night",
+    "Sepanjang Hari":"Throughout the day"
+  };
+  return map[text] || text || "";
+}
+
+function formatForecastDate(dateString) {
+  const d = new Date(dateString + "T00:00:00");
+  return {
+    day: new Intl.DateTimeFormat("en-MY",{weekday:"short"}).format(d).toUpperCase(),
+    date: new Intl.DateTimeFormat("en-MY",{day:"2-digit",month:"short"}).format(d).toUpperCase()
+  };
+}
+
+function applyFanReady(forecast) {
+  const summary = forecast?.summary_forecast || "";
+  const kind = weatherKind(summary);
+  const title = document.getElementById("fanReadyTitle");
+  const items = document.getElementById("fanReadyItems");
+
+  let tips = [];
+  if (kind === "storm") {
+    title.textContent = "THUNDERSTORM MODE";
+    tips = ["PACK A PONCHO","PROTECT ELECTRONICS","EXPECT GRIP CHANGES","ALLOW EXTRA TRAVEL TIME"];
+  } else if (kind === "rain") {
+    title.textContent = "RAIN-READY MODE";
+    tips = ["PACK A PONCHO","WATERPROOF YOUR BAG","WATCH TRACK CONDITIONS"];
+  } else if (kind === "haze") {
+    title.textContent = "HAZE AWARENESS";
+    tips = ["CHECK MET UPDATES","PLAN FOR VISIBILITY","STAY HYDRATED"];
+  } else {
+    title.textContent = "HOT-WEATHER MODE";
+    tips = ["HYDRATE EARLY","SUN PROTECTION","LIGHT CLOTHING","KEEP PONCHO READY"];
+  }
+
+  items.innerHTML = tips.map(t => `<span>${t}</span>`).join("");
+}
+
+function mapWeatherToStrategy(forecast) {
+  const kind = weatherKind(forecast?.summary_forecast || "");
+  const condition = document.getElementById("trackCondition");
+  const rainLap = document.getElementById("rainLap");
+
+  if (kind === "storm") {
+    condition.value = "heavy";
+    rainLap.value = "25";
+  } else if (kind === "rain") {
+    condition.value = "light";
+    rainLap.value = "25";
+  } else {
+    condition.value = "dry";
+    rainLap.value = "none";
+  }
+
+  document.getElementById("strategy").scrollIntoView({behavior:"smooth"});
+}
+
+async function loadSepangWeather() {
+  const grid = document.getElementById("forecastGrid");
+
+  try {
+    const forecastRes = await fetch(WEATHER_API + SEPANG_FILTER);
+    if (!forecastRes.ok) throw new Error(`Forecast API returned ${forecastRes.status}`);
+    const forecasts = await forecastRes.json();
+
+    if (!Array.isArray(forecasts) || !forecasts.length) {
+      throw new Error("No Sepang forecast rows returned");
+    }
+
+    forecasts.sort((a,b) => String(a.date).localeCompare(String(b.date)));
+    latestSepangForecast = forecasts[0];
+
+    const today = forecasts[0];
+    document.getElementById("weatherTemp").textContent = `${today.max_temp ?? "--"}°`;
+    document.getElementById("weatherRange").textContent = `${today.min_temp ?? "--"}° MIN / ${today.max_temp ?? "--"}° MAX`;
+    document.getElementById("weatherSummary").textContent = englishWeather(today.summary_forecast);
+    document.getElementById("weatherMorning").textContent = englishWeather(today.morning_forecast);
+    document.getElementById("weatherAfternoon").textContent = englishWeather(today.afternoon_forecast);
+    document.getElementById("weatherNight").textContent = englishWeather(today.night_forecast);
+    document.getElementById("weatherIcon").textContent = weatherIconFor(today.summary_forecast);
+    document.getElementById("weatherUpdated").textContent = `FORECAST DATE ${formatForecastDate(today.date).date}`;
+
+    const display = forecasts.slice(0,7);
+    grid.innerHTML = display.map(f => {
+      const fd = formatForecastDate(f.date);
+      const race = RACE_DATES.has(f.date);
+      return `
+        <article class="forecast-day ${race ? "race-day" : ""}">
+          <div class="forecast-date">${fd.day} · ${fd.date}${race ? " · RACE WEEKEND" : ""}</div>
+          <div class="forecast-icon">${weatherIconFor(f.summary_forecast)}</div>
+          <h3>${englishWeather(f.summary_forecast)}</h3>
+          <div class="when">${englishWhen(f.summary_when)}</div>
+          <div class="temp-range">${f.min_temp ?? "--"}° / ${f.max_temp ?? "--"}°C</div>
+        </article>
+      `;
+    }).join("");
+
+    applyFanReady(today);
+  } catch (err) {
+    console.error("SEPANG//26 weather error:", err);
+    grid.innerHTML = `
+      <article class="forecast-day loading-card">
+        <span class="api-error">WEATHER DATA TEMPORARILY UNAVAILABLE</span>
+        <strong>SEPANG//26 STILL WORKS OFFLINE</strong>
+        <p>Refresh later for the latest MET Malaysia forecast via data.gov.my.</p>
+      </article>
+    `;
+    document.getElementById("weatherSummary").textContent = "Weather feed temporarily unavailable.";
+    document.getElementById("weatherRange").textContent = "CHECK AGAIN SOON";
+    document.getElementById("fanReadyTitle").textContent = "DEFAULT RACE-DAY PREP";
+    document.getElementById("fanReadyItems").innerHTML =
+      "<span>HYDRATE</span><span>PACK A PONCHO</span><span>PROTECT ELECTRONICS</span>";
+  }
+
+  // Weather warnings are queried separately because they have a different schema.
+  try {
+    const warningRes = await fetch(WARNING_API + "?limit=20");
+    if (!warningRes.ok) return;
+    const warnings = await warningRes.json();
+    if (!Array.isArray(warnings)) return;
+
+    const now = new Date();
+    const relevant = warnings.find(w => {
+      const text = [
+        w.heading_en,w.text_en,w.instruction_en,
+        w.heading_bm,w.text_bm,w.instruction_bm
+      ].filter(Boolean).join(" ").toLowerCase();
+
+      const locationHit = text.includes("sepang") || text.includes("selangor");
+      const validTo = w.valid_to ? new Date(w.valid_to) : null;
+      const stillValid = !validTo || validTo >= now;
+      return locationHit && stillValid;
+    });
+
+    if (relevant) {
+      const box = document.getElementById("weatherAlert");
+      box.hidden = false;
+      document.getElementById("weatherAlertTitle").textContent =
+        relevant.heading_en || relevant.warning_issue?.title_en || "MET Malaysia weather warning";
+      document.getElementById("weatherAlertText").textContent =
+        relevant.instruction_en || relevant.text_en || "Please follow the latest MET Malaysia advisory.";
+    }
+  } catch (err) {
+    console.warn("Weather warning feed unavailable:", err);
+  }
+}
+
+document.getElementById("useWeatherStrategy").addEventListener("click", () => {
+  if (latestSepangForecast) mapWeatherToStrategy(latestSepangForecast);
+  else document.getElementById("strategy").scrollIntoView({behavior:"smooth"});
+});
+
+loadSepangWeather();

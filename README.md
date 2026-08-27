@@ -2,33 +2,80 @@
 
 **Unofficial Fan Companion**
 
-A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project focuses on one clear use case: helping fans understand and enjoy a Malaysian F1 race weekend through circuit context, strategy, beginner education and shareable fan interaction.
+A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project focuses on one clear use case: helping fans understand and enjoy a Malaysian F1 race weekend through circuit context, weather, strategy, beginner education and shareable fan interaction.
 
 ## Version history
 
 | Version | Status | Main changes |
 |---|---|---|
-| **V1** | Prototype | First working race hub, generic circuit interaction, Strategy Lab, First Timer mode, Malaysia survival guide and prediction card. |
-| **V2** | Visual redesign | Replaced the portfolio-like acid-green palette with a distinct Sepang sunrise direction: racing red, hot orange, amber, warm cream and asphalt black. |
-| **V3** | Current | Redrew the circuit into a recognizable Sepang-style 15-turn silhouette, improved mobile responsiveness, added full T1–T15 interactions, and added PNG download + native social sharing for the fan prediction card. |
+| **V1** | Previous | First working race hub, generic circuit interaction, Strategy Lab, First Timer mode, Malaysia survival guide and prediction card. |
+| **V2** | Previous | Replaced the portfolio-like acid-green palette with a distinct Sepang sunrise direction: racing red, hot orange, amber, warm cream and asphalt black. |
+| **V3** | Previous | Redrew the circuit into a recognizable Sepang-style 15-turn silhouette, improved mobile responsiveness, added full T1–T15 interactions, and added PNG download + native social sharing for the fan prediction card. |
+| **V4** | Previous | Fixed fan-card action contrast and improved hover/focus readability. |
+| **V5** | **Current** | Integrated official Malaysian weather data from MET Malaysia via data.gov.my, added a 7-day Sepang forecast, relevant warning detection, Fan Ready recommendations, weather-to-Strategy-Lab handoff, API fallback states and mobile weather layouts. |
 
 ## Current features
 
 - Mobile-first race weekend homepage
-- Friday / Saturday / Sunday session overview
 - Fan-made Sepang circuit redraw
 - Interactive Turn 1–15 circuit notes
-- Fan strategy simulator for dry / light rain / heavy rain scenarios
+- **MET Malaysia / data.gov.my Sepang forecast**
+- **7-day weather outlook**
+- **Morning, afternoon and night forecast**
+- **Relevant Selangor / Sepang weather warning detection**
+- **Fan Ready guidance based on forecast conditions**
+- **Send current weather scenario into Strategy Lab**
+- Fan strategy simulator
 - Beginner-friendly F1 explainer
 - Malaysia-specific heat, rain, walking and connectivity guidance
 - Fan prediction card
 - Download prediction card as PNG
-- Native mobile share sheet when the browser supports file sharing
+- Native mobile share sheet when supported
 - Explicit unofficial / non-affiliation disclaimer
+
+## Weather data
+
+SEPANG//26 uses Malaysia's official Weather API published through **data.gov.my**. The source data is provided by **MET Malaysia (Malaysian Meteorological Department)**.
+
+Official developer reference:
+
+**https://developer.data.gov.my/realtime-api/weather**
+
+Endpoints used:
+
+```text
+GET https://api.data.gov.my/weather/forecast
+GET https://api.data.gov.my/weather/warning
+```
+
+The app filters the forecast for **Sepang** using the documented nested-location query syntax.
+
+Important distinction:
+
+- The **7-day general forecast is updated daily**.
+- **Weather warnings are updated when required**.
+- SEPANG//26 does not present this API as F1 telemetry, live track temperature or team-grade meteorological data.
+- Forecast field values are currently supplied in Bahasa Melayu by the API; the app maps the documented values to concise English fan-facing labels.
+
+The earthquake warning endpoint is intentionally not used because it is outside the app's race-weekend weather use case.
+
+## Race-weekend behaviour
+
+The forecast endpoint only provides a 7-day window. SEPANG//26 therefore shows the latest Sepang forecast normally.
+
+When **2–4 October 2026** enters the available forecast window, those dates are automatically highlighted as the race weekend.
+
+## Failure handling
+
+If the API is unavailable:
+
+- the rest of SEPANG//26 continues working;
+- the weather module displays an unavailable state;
+- generic Malaysia race-day preparation guidance remains visible.
 
 ## Run locally
 
-Open `index.html` directly, or run:
+For reliable API requests, serve the project through a local web server rather than opening the HTML file directly:
 
 ```bash
 python3 -m http.server 8000
@@ -42,16 +89,18 @@ http://localhost:8000
 
 ## Deploy
 
-This version is static and does not require a backend. It can be deployed directly to:
+This version remains frontend-only and can be deployed to:
 
 - Vercel
 - Netlify
 - GitHub Pages
 
-## Important project notes
+For production, confirm browser CORS behaviour from the final deployment origin. If the API later requires server-side proxying or caching, a lightweight serverless route can be added.
 
-The circuit illustration in this project is an original fan-made redraw intended to evoke the recognizable Sepang layout. It is not an official circuit map asset.
+## Project notes
 
-Before final bounty submission, official event details such as session times, transport, venue facilities, weather and race-weekend information should be validated against authoritative sources.
+The circuit illustration is an original fan-made redraw intended to evoke the recognizable Sepang layout. It is not an official circuit map asset.
+
+Before final bounty submission, race session times, transport, venue facilities and other event-specific information should be validated against authoritative sources.
 
 The project intentionally avoids official Formula 1 logos, team logos and copied Formula 1 UI.

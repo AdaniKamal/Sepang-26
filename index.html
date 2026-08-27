@@ -40,27 +40,85 @@
         </div>
       </div>
 
-      <div class="race-card">
-        <div class="card-label">RACE SCENARIO</div>
-        <div class="weather-row">
+      <div class="race-card" id="weatherCard">
+        <div class="card-label">MET MALAYSIA WEATHER OUTLOOK</div>
+
+        <div class="weather-live-head">
           <div>
-            <div class="weather-temp">31°</div>
-            <div class="weather-small">HOT / HUMID</div>
+            <div class="weather-temp" id="weatherTemp">--°</div>
+            <div class="weather-small" id="weatherRange">LOADING SEPANG...</div>
           </div>
-          <div class="weather-icon">☂</div>
+          <div class="weather-icon" id="weatherIcon">☀</div>
         </div>
-        <div class="weather-line">
-          <span>RAIN RISK</span>
-          <strong>HIGH</strong>
+
+        <div class="weather-summary" id="weatherSummary">Fetching the latest forecast from data.gov.my.</div>
+
+        <div class="weather-periods">
+          <div><span>MORNING</span><strong id="weatherMorning">—</strong></div>
+          <div><span>AFTERNOON</span><strong id="weatherAfternoon">—</strong></div>
+          <div><span>NIGHT</span><strong id="weatherNight">—</strong></div>
         </div>
-        <div class="meter"><i style="width:72%"></i></div>
-        <div class="weather-note">Tropical conditions can turn a normal race into a strategy fight.</div>
+
+        <div class="weather-alert" id="weatherAlert" hidden>
+          <span>⚠ WEATHER WARNING</span>
+          <strong id="weatherAlertTitle">Active warning</strong>
+          <p id="weatherAlertText"></p>
+        </div>
+
+        <div class="weather-source-row">
+          <span id="weatherUpdated">Forecast updates daily</span>
+          <a href="https://developer.data.gov.my/realtime-api/weather" target="_blank" rel="noopener">MET Malaysia via data.gov.my ↗</a>
+        </div>
       </div>
 
       <div class="hero-ticker">
         <span>SEPANG INTERNATIONAL CIRCUIT</span>
         <span>WEATHER CAN CHANGE EVERYTHING</span>
         <span>PLAN · LEARN · PREDICT</span>
+      </div>
+    </section>
+
+    <section class="forecast-strip section-shell" id="weather">
+      <div class="section-head compact">
+        <div>
+          <div class="eyebrow">LIVE DATA / WEATHER</div>
+          <h2>SEPANG<br>RAIN WATCH</h2>
+        </div>
+        <p>Official Malaysian forecast data for Sepang. When the race weekend enters the 7-day forecast window, this section automatically becomes your Friday–Sunday race-weather view.</p>
+      </div>
+
+      <div class="weather-status-row">
+        <div class="weather-status">
+          <span>DATA SOURCE</span>
+          <strong>MET MALAYSIA</strong>
+        </div>
+        <div class="weather-status">
+          <span>FORECAST</span>
+          <strong>UPDATED DAILY</strong>
+        </div>
+        <div class="weather-status">
+          <span>WARNINGS</span>
+          <strong>UPDATED WHEN REQUIRED</strong>
+        </div>
+      </div>
+
+      <div class="forecast-grid" id="forecastGrid">
+        <article class="forecast-day loading-card">
+          <span>LOADING</span>
+          <strong>SEPANG FORECAST</strong>
+          <p>Connecting to data.gov.my...</p>
+        </article>
+      </div>
+
+      <div class="fan-ready" id="fanReady">
+        <div>
+          <div class="card-label">FAN READY</div>
+          <h3 id="fanReadyTitle">CHECKING CONDITIONS...</h3>
+        </div>
+        <div class="fan-ready-items" id="fanReadyItems">
+          <span>Loading weather guidance</span>
+        </div>
+        <button class="btn btn-primary" id="useWeatherStrategy" type="button">USE IN STRATEGY LAB</button>
       </div>
     </section>
 
