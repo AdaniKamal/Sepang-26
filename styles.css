@@ -900,3 +900,59 @@ footer span{font-family:"IBM Plex Mono";font-size:9px}
 @media(max-width:620px){
   .turn-numbers text{font-size:22px;stroke-width:5px}
 }
+
+
+/* V9 — corrected T15 + D-1 countdown */
+.turn15-hotspot{
+  fill:var(--yellow);
+  stroke:#0a0a0a;
+  stroke-width:5px;
+}
+.turn15-number{
+  fill:var(--yellow) !important;
+}
+.race-countdown{
+  width:min(720px,100%);
+  margin:28px 0 18px;
+  padding:14px 16px;
+  border:1px solid rgba(255,176,0,.42);
+  background:rgba(10,10,10,.42);
+  backdrop-filter:blur(4px);
+}
+.countdown-label{
+  font-family:"IBM Plex Mono";
+  font-size:9px;
+  letter-spacing:1.2px;
+  color:var(--yellow);
+  margin-bottom:10px;
+}
+.countdown-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:rgba(255,255,255,.12);
+}
+.countdown-grid div{
+  background:rgba(18,8,5,.94);
+  padding:10px 12px;
+}
+.countdown-grid strong{
+  display:block;
+  font-family:"Archivo Black";
+  font-size:clamp(25px,3vw,40px);
+  line-height:1;
+  color:var(--cream);
+}
+.countdown-grid span{
+  display:block;
+  margin-top:5px;
+  font-family:"IBM Plex Mono";
+  font-size:7px;
+  color:var(--muted);
+}
+@media(max-width:620px){
+  .race-countdown{margin-top:20px;padding:10px}
+  .countdown-grid div{padding:9px 7px}
+  .countdown-grid strong{font-size:24px}
+  .countdown-label{line-height:1.5}
+}

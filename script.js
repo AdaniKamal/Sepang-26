@@ -557,3 +557,38 @@ function updateForecastArrows() {
 forecastGrid.addEventListener("scroll", updateForecastArrows, {passive:true});
 window.addEventListener("resize", updateForecastArrows);
 setTimeout(updateForecastArrows, 900);
+
+
+// ===== V9: Countdown to D-1 =====
+// D-1 is defined as 1 October 2026, 00:00 Malaysia time,
+// one day before the stated 2–4 October race weekend.
+const D1_TARGET = new Date("2026-10-01T00:00:00+08:00");
+
+function updateD1Countdown() {
+  const now = new Date();
+  let diff = D1_TARGET.getTime() - now.getTime();
+
+  if (diff <= 0) {
+    ["cdDays","cdHours","cdMinutes","cdSeconds"].forEach(id => {
+      document.getElementById(id).textContent = "00";
+    });
+    const label = document.querySelector(".countdown-label");
+    if (label) label.textContent = "D-1 · SEPANG RACE WEEKEND IS HERE";
+    return;
+  }
+
+  const days = Math.floor(diff / 86400000);
+  diff %= 86400000;
+  const hours = Math.floor(diff / 3600000);
+  diff %= 3600000;
+  const minutes = Math.floor(diff / 60000);
+  const seconds = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById("cdDays").textContent = String(days).padStart(2,"0");
+  document.getElementById("cdHours").textContent = String(hours).padStart(2,"0");
+  document.getElementById("cdMinutes").textContent = String(minutes).padStart(2,"0");
+  document.getElementById("cdSeconds").textContent = String(seconds).padStart(2,"0");
+}
+
+updateD1Countdown();
+setInterval(updateD1Countdown, 1000);
