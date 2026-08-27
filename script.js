@@ -396,12 +396,19 @@ async function loadSepangWeather() {
     document.getElementById("weatherUpdated").textContent = `FORECAST DATE ${formatForecastDate(today.date).date}`;
 
     const display = forecasts.slice(0,7);
+    const localToday = new Intl.DateTimeFormat("en-CA", {
+      timeZone:"Asia/Kuala_Lumpur",
+      year:"numeric", month:"2-digit", day:"2-digit"
+    }).format(new Date());
+
     grid.innerHTML = display.map(f => {
       const fd = formatForecastDate(f.date);
       const race = RACE_DATES.has(f.date);
+      const isToday = f.date === localToday;
       return `
-        <article class="forecast-day ${race ? "race-day" : ""}">
+        <article class="forecast-day ${race ? "race-day" : ""} ${isToday ? "today-card" : ""}">
           <div class="forecast-date">${fd.day} · ${fd.date}${race ? " · RACE WEEKEND" : ""}</div>
+          ${isToday ? '<div class="today-badge">TODAY</div>' : ''}
           <div class="forecast-icon">${weatherIconFor(f.summary_forecast)}</div>
           <h3>${englishWeather(f.summary_forecast)}</h3>
           <div class="when">${englishWhen(f.summary_when)}</div>
@@ -466,3 +473,55 @@ document.getElementById("useWeatherStrategy").addEventListener("click", () => {
 });
 
 loadSepangWeather();
+
+
+// ===== V6: weather card interaction =====
+const weatherCard = document.getElementById("weatherCard");
+
+function setWeatherCardOpen(open) {
+  weatherCard.classList.toggle("is-open", open);
+  weatherCard.setAttribute("aria-expanded", String(open));
+}
+
+weatherCard.addEventListener("click", (event) => {
+  if (event.target.closest("a")) return;
+  setWeatherCardOpen(!weatherCard.classList.contains("is-open"));
+});
+
+weatherCard.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    setWeatherCardOpen(!weatherCard.classList.contains("is-open"));
+  }
+  if (event.key === "Escape") setWeatherCardOpen(false);
+});
+
+// ===== V6: forecast carousel =====
+const forecastGrid = document.getElementById("forecastGrid");
+const forecastPrev = document.getElementById("forecastPrev");
+const forecastNext = document.getElementById("forecastNext");
+
+function forecastScrollAmount() {
+  const firstCard = forecastGrid.querySelector(".forecast-day");
+  if (!firstCard) return forecastGrid.clientWidth * 0.8;
+  const gap = 10;
+  return firstCard.getBoundingClientRect().width + gap;
+}
+
+forecastPrev.addEventListener("click", () => {
+  forecastGrid.scrollBy({left:-forecastScrollAmount(), behavior:"smooth"});
+});
+
+forecastNext.addEventListener("click", () => {
+  forecastGrid.scrollBy({left:forecastScrollAmount(), behavior:"smooth"});
+});
+
+function updateForecastArrows() {
+  const maxScroll = forecastGrid.scrollWidth - forecastGrid.clientWidth - 4;
+  forecastPrev.disabled = forecastGrid.scrollLeft <= 4;
+  forecastNext.disabled = forecastGrid.scrollLeft >= maxScroll;
+}
+
+forecastGrid.addEventListener("scroll", updateForecastArrows, {passive:true});
+window.addEventListener("resize", updateForecastArrows);
+setTimeout(updateForecastArrows, 900);

@@ -12,7 +12,8 @@ A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project
 | **V2** | Previous | Replaced the portfolio-like acid-green palette with a distinct Sepang sunrise direction: racing red, hot orange, amber, warm cream and asphalt black. |
 | **V3** | Previous | Redrew the circuit into a recognizable Sepang-style 15-turn silhouette, improved mobile responsiveness, added full T1–T15 interactions, and added PNG download + native social sharing for the fan prediction card. |
 | **V4** | Previous | Fixed fan-card action contrast and improved hover/focus readability. |
-| **V5** | **Current** | Integrated official Malaysian weather data from MET Malaysia via data.gov.my, added a 7-day Sepang forecast, relevant warning detection, Fan Ready recommendations, weather-to-Strategy-Lab handoff, API fallback states and mobile weather layouts. |
+| **V5** | Previous | Integrated official Malaysian weather data from MET Malaysia via data.gov.my, added a 7-day Sepang forecast, relevant warning detection, Fan Ready recommendations, weather-to-Strategy-Lab handoff, API fallback states and mobile weather layouts. |
+| **V6** | **Current** | Made the hero weather card interactive with compact and expanded states, added Weather to the menu, converted the 7-day forecast into a swipeable/arrow carousel, highlighted Today, and refined mobile interaction for touch screens. |
 
 ## Current features
 
@@ -20,7 +21,7 @@ A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project
 - Fan-made Sepang circuit redraw
 - Interactive Turn 1–15 circuit notes
 - **MET Malaysia / data.gov.my Sepang forecast**
-- **7-day weather outlook**
+- **7-day weather outlook in a swipeable carousel**
 - **Morning, afternoon and night forecast**
 - **Relevant Selangor / Sepang weather warning detection**
 - **Fan Ready guidance based on forecast conditions**

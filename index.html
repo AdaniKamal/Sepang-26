@@ -21,6 +21,7 @@
 
   <nav class="mobile-nav" id="mobileNav">
     <a href="#home">Race Hub</a>
+    <a href="#weather">Weather</a>
     <a href="#circuit">Circuit</a>
     <a href="#strategy">Strategy Lab</a>
     <a href="#rookie">First Timer</a>
@@ -40,8 +41,9 @@
         </div>
       </div>
 
-      <div class="race-card" id="weatherCard">
-        <div class="card-label">MET MALAYSIA WEATHER OUTLOOK</div>
+      <div class="race-card weather-card-interactive" id="weatherCard" tabindex="0" role="button" aria-expanded="false" aria-label="Open Sepang weather details">
+        <div class="card-label weather-card-label">MET MALAYSIA WEATHER OUTLOOK</div>
+        <div class="weather-card-hint">HOVER / TAP FOR DETAILS ↗</div>
 
         <div class="weather-live-head">
           <div>
@@ -53,19 +55,19 @@
 
         <div class="weather-summary" id="weatherSummary">Fetching the latest forecast from data.gov.my.</div>
 
-        <div class="weather-periods">
+        <div class="weather-periods weather-detail">
           <div><span>MORNING</span><strong id="weatherMorning">—</strong></div>
           <div><span>AFTERNOON</span><strong id="weatherAfternoon">—</strong></div>
           <div><span>NIGHT</span><strong id="weatherNight">—</strong></div>
         </div>
 
-        <div class="weather-alert" id="weatherAlert" hidden>
+        <div class="weather-alert weather-detail" id="weatherAlert" hidden>
           <span>⚠ WEATHER WARNING</span>
           <strong id="weatherAlertTitle">Active warning</strong>
           <p id="weatherAlertText"></p>
         </div>
 
-        <div class="weather-source-row">
+        <div class="weather-source-row weather-detail">
           <span id="weatherUpdated">Forecast updates daily</span>
           <a href="https://developer.data.gov.my/realtime-api/weather" target="_blank" rel="noopener">MET Malaysia via data.gov.my ↗</a>
         </div>
@@ -102,13 +104,18 @@
         </div>
       </div>
 
-      <div class="forecast-grid" id="forecastGrid">
-        <article class="forecast-day loading-card">
-          <span>LOADING</span>
-          <strong>SEPANG FORECAST</strong>
-          <p>Connecting to data.gov.my...</p>
-        </article>
+      <div class="forecast-carousel-shell">
+        <button class="forecast-arrow forecast-prev" id="forecastPrev" type="button" aria-label="Previous forecast day">←</button>
+        <div class="forecast-grid forecast-carousel" id="forecastGrid">
+          <article class="forecast-day loading-card">
+            <span>LOADING</span>
+            <strong>SEPANG FORECAST</strong>
+            <p>Connecting to data.gov.my...</p>
+          </article>
+        </div>
+        <button class="forecast-arrow forecast-next" id="forecastNext" type="button" aria-label="Next forecast day">→</button>
       </div>
+      <div class="forecast-carousel-note">Swipe on mobile · Use arrows on desktop</div>
 
       <div class="fan-ready" id="fanReady">
         <div>
