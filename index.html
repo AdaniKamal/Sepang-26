@@ -111,15 +111,68 @@
 
       <div class="circuit-panel">
         <div class="track-map">
-          <svg viewBox="0 0 560 320" role="img" aria-label="Stylized Sepang circuit map">
-            <path d="M92,201 C73,150 94,105 144,96 C198,86 246,114 276,75 C308,33 369,47 385,88 C403,135 358,160 390,197 C428,242 488,197 502,239 C515,278 450,294 391,279 C326,262 303,225 256,244 C204,265 115,262 92,201 Z"
-              class="track-outline"/>
-            <circle cx="126" cy="113" r="9" class="hotspot" data-zone="turn1"/>
-            <circle cx="365" cy="79" r="9" class="hotspot" data-zone="fast"/>
-            <circle cx="471" cy="235" r="9" class="hotspot" data-zone="final"/>
-            <circle cx="256" cy="244" r="9" class="hotspot" data-zone="rain"/>
+          <svg viewBox="0 0 900 560" role="img" aria-label="Stylized Sepang International Circuit layout">
+            <!-- Original fan-made redraw based on the recognizable Sepang layout, not an official map asset. -->
+            <path
+              d="M155 285
+                 L560 285
+                 C610 285 645 275 660 245
+                 C675 215 660 185 635 160
+                 L565 84
+                 C545 62 515 55 486 64
+                 C448 76 428 111 414 140
+                 C401 168 386 181 363 186
+                 C337 192 319 179 318 158
+                 C316 132 344 111 375 101
+                 C406 91 425 70 418 47
+                 C411 23 379 20 353 28
+                 L171 84
+                 C127 98 104 127 106 161
+                 C109 194 130 220 133 240
+                 C136 255 127 263 112 257
+                 C95 250 83 255 80 269
+                 C77 283 89 294 105 294
+                 L155 294
+                 C123 314 116 343 128 370
+                 C145 409 193 431 235 420
+                 C267 412 289 391 312 400
+                 C333 409 353 439 372 456
+                 C394 477 418 480 433 462
+                 C454 436 440 399 414 379
+                 C391 362 384 343 401 333
+                 C423 320 452 329 479 337
+                 C514 347 548 340 567 315
+                 C580 299 577 288 560 285"
+              class="track-outline"
+            />
+
+            <path d="M160 303 L550 303" class="pit-lane"/>
+            <line x1="470" y1="280" x2="470" y2="309" class="start-line"/>
+            <line x1="480" y1="280" x2="480" y2="309" class="start-line alt"/>
+
+            <circle cx="142" cy="292" r="10" class="hotspot" data-zone="turn1"/>
+            <circle cx="129" cy="372" r="10" class="hotspot" data-zone="turn2"/>
+            <circle cx="234" cy="420" r="10" class="hotspot" data-zone="turn3"/>
+            <circle cx="360" cy="446" r="10" class="hotspot" data-zone="turn4"/>
+            <circle cx="427" cy="374" r="10" class="hotspot" data-zone="turn5"/>
+            <circle cx="551" cy="316" r="10" class="hotspot" data-zone="turn6"/>
+            <circle cx="654" cy="247" r="10" class="hotspot" data-zone="turn7"/>
+            <circle cx="617" cy="144" r="10" class="hotspot" data-zone="turn8"/>
+            <circle cx="505" cy="66" r="10" class="hotspot" data-zone="turn9"/>
+            <circle cx="414" cy="143" r="10" class="hotspot" data-zone="turn10"/>
+            <circle cx="330" cy="180" r="10" class="hotspot" data-zone="turn11"/>
+            <circle cx="371" cy="99" r="10" class="hotspot" data-zone="turn12"/>
+            <circle cx="263" cy="57" r="10" class="hotspot" data-zone="turn13"/>
+            <circle cx="111" cy="162" r="10" class="hotspot" data-zone="turn14"/>
+            <circle cx="106" cy="269" r="10" class="hotspot" data-zone="turn15"/>
+
+            <text x="478" y="265" class="track-label">START / FINISH</text>
+            <text x="370" y="324" class="track-label muted">PIT LANE</text>
           </svg>
-          <div class="track-hint">TAP A GREEN MARKER</div>
+          <div class="track-legend">
+            <span><i class="legend-dot"></i> TAP T1–T15</span>
+            <span>5.542 KM · 15 TURNS</span>
+          </div>
         </div>
 
         <div class="track-info" id="trackInfo">
@@ -307,6 +360,10 @@
             <div><span>STRATEGY</span><strong id="cardStops">2 STOP</strong></div>
           </div>
           <div class="fan-footer">UNOFFICIAL FAN COMPANION · MALAYSIA</div>
+        </div>
+        <div class="fan-actions">
+          <button class="btn btn-ghost" id="downloadCard" type="button">DOWNLOAD PNG</button>
+          <button class="btn btn-primary" id="shareCard" type="button">SHARE CARD</button>
         </div>
       </div>
     </section>

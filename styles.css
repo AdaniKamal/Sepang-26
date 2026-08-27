@@ -333,3 +333,139 @@ footer span{font-family:"IBM Plex Mono";font-size:9px}
 .engineer span{color:var(--orange)}
 .flow-line{background:var(--orange)}
 .brand span{color:var(--orange)}
+
+
+/* V3 — real Sepang silhouette + mobile refinement */
+.track-map{
+  overflow:hidden;
+}
+.track-map svg{
+  width:100%;
+  height:auto;
+  max-width:860px;
+  overflow:visible;
+}
+.track-outline{
+  fill:none;
+  stroke:#ffddbd;
+  stroke-width:18;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:drop-shadow(0 0 14px rgba(255,107,0,.12));
+}
+.pit-lane{
+  fill:none;
+  stroke:#ff4b1f;
+  stroke-width:8;
+  stroke-linecap:round;
+}
+.start-line{
+  stroke:#fff0d8;
+  stroke-width:4;
+}
+.start-line.alt{
+  stroke:#181818;
+  stroke-dasharray:5 5;
+}
+.track-label{
+  fill:#fff0d8;
+  font-family:"IBM Plex Mono";
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+.track-label.muted{
+  fill:#9a8271;
+  font-size:11px;
+}
+.track-legend{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  margin-top:6px;
+  color:var(--muted);
+  font-family:"IBM Plex Mono";
+  font-size:10px;
+  letter-spacing:.8px;
+}
+.legend-dot{
+  display:inline-block;
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--orange);
+  margin-right:6px;
+}
+.fan-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:10px;
+}
+.prediction-layout{
+  align-items:start;
+}
+@media(max-width:900px){
+  .circuit-panel{grid-template-columns:1fr}
+  .track-info{min-height:260px}
+}
+@media(max-width:620px){
+  body{overflow-x:hidden}
+  .hero{
+    min-height:auto;
+    grid-template-columns:1fr;
+  }
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .hero-actions .btn{width:100%}
+  .race-card{
+    width:100%;
+    transform:none;
+    box-shadow:10px 10px 0 rgba(255,107,0,.14);
+  }
+  .section-head{
+    grid-template-columns:1fr;
+    margin-bottom:28px;
+  }
+  .section-head p{
+    margin:0;
+    font-size:14px;
+  }
+  .track-map{
+    padding:12px;
+    min-height:0;
+  }
+  .track-map svg{
+    min-width:0;
+  }
+  .track-outline{stroke-width:22}
+  .hotspot{r:12}
+  .track-label{font-size:16px}
+  .track-label.muted{font-size:14px}
+  .track-legend{
+    flex-direction:column;
+    gap:6px;
+  }
+  .track-info{
+    min-height:230px;
+    padding:22px;
+  }
+  .track-info h3{font-size:38px}
+  .strategy-form,.strategy-result,.prediction-form{padding:18px}
+  .strategy-result{min-height:0}
+  .fan-card{
+    min-height:500px;
+    padding:20px;
+  }
+  .fan-value{font-size:54px}
+  .fan-actions{
+    grid-template-columns:1fr;
+  }
+  .fan-actions .btn{width:100%}
+  input,select{
+    min-height:48px;
+    font-size:16px;
+  }
+}
