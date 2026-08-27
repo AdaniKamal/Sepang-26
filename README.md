@@ -16,7 +16,8 @@ A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project
 | **V6** | Previous | Made the hero weather card interactive with compact and expanded states, added Weather to the menu, converted the 7-day forecast into a swipeable/arrow carousel, highlighted Today, and refined mobile interaction for touch screens. |
 | **V7** | Previous | Fixed duplicate weather dates by deduplicating API results before rendering, ensuring one forecast card per calendar day. Also simplified the Weather section copy by removing the race-weekend-window sentence. |
 | **V8** | Previous | Corrected the earlier circuit-data issue and rebuilt the turn mapping against the supplied Sepang reference. |
-| **V9** | **Current** | Refined the circuit again against the supplied numbered reference, specifically correcting Turn 15 as the inner hairpin before the main straight. Added a live D-1 countdown to 1 October 2026 (Malaysia time), one day before the stated 2–4 October race weekend. |
+| **V9** | Previous | Refined the circuit and added the D-1 countdown. |
+| **V10** | **Current** | Rebuilt the circuit again against the latest supplied Sepang reference image, restoring the correct overall topology and Turn 1–15 sequence, keeping Turn 15 on the inside before the main straight, and adding a mobile-friendly turn selector. |
 
 ## Current features
 
@@ -77,30 +78,6 @@ If the API is unavailable:
 - the weather module displays an unavailable state;
 - generic Malaysia race-day preparation guidance remains visible.
 
-## Run locally
-
-For reliable API requests, serve the project through a local web server rather than opening the HTML file directly:
-
-```bash
-python3 -m http.server 8000
-```
-
-Then visit:
-
-```text
-http://localhost:8000
-```
-
-## Deploy
-
-This version remains frontend-only and can be deployed to:
-
-- Vercel
-- Netlify
-- GitHub Pages
-
-For production, confirm browser CORS behaviour from the final deployment origin. If the API later requires server-side proxying or caching, a lightweight serverless route can be added.
-
 ## Project notes
 
 The circuit illustration is an original fan-made redraw intended to evoke the recognizable Sepang layout. It is not an official circuit map asset.
@@ -108,7 +85,6 @@ The circuit illustration is an original fan-made redraw intended to evoke the re
 Before final bounty submission, race session times, transport, venue facilities and other event-specific information should be validated against authoritative sources.
 
 The project intentionally avoids official Formula 1 logos, team logos and copied Formula 1 UI.
-
 
 ## Circuit reference correction
 

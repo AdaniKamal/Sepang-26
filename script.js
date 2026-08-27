@@ -592,3 +592,47 @@ function updateD1Countdown() {
 
 updateD1Countdown();
 setInterval(updateD1Countdown, 1000);
+
+
+// ===== V10: turn selector sync =====
+function renderTurnInfo(zone) {
+  const data = trackData[zone];
+  if (!data) return;
+
+  document.getElementById("trackInfo").innerHTML = `
+    <div class="card-label">CIRCUIT NOTE</div>
+    <h3>${data.title}</h3>
+    <p>${data.body}</p>
+    <div class="track-tags">${data.tags.map(t => `<span>${t}</span>`).join("")}</div>
+  `;
+
+  document.querySelectorAll("[data-turn-select]").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.turnSelect === zone);
+  });
+}
+
+document.querySelectorAll("[data-turn-select]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    renderTurnInfo(btn.dataset.turnSelect);
+    const marker = document.querySelector(`.hotspot[data-zone="${btn.dataset.turnSelect}"]`);
+    if (marker) {
+      marker.animate(
+        [
+          { transform:"scale(1)", transformOrigin:"center" },
+          { transform:"scale(1.7)", transformOrigin:"center" },
+          { transform:"scale(1)", transformOrigin:"center" }
+        ],
+        { duration:420, easing:"ease-out" }
+      );
+    }
+  });
+});
+
+// Keep map-marker clicks in sync with selector state.
+document.querySelectorAll(".hotspot").forEach(marker => {
+  marker.addEventListener("click", () => {
+    renderTurnInfo(marker.dataset.zone);
+  });
+});
+
+renderTurnInfo("turn1");
