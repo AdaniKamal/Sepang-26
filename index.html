@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0b0b" />
+  <title>SEPANG//26 — Unofficial Fan Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home">SEPANG<span>//26</span></a>
+    <div class="tagline">UNOFFICIAL FAN COMPANION</div>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">MENU</button>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#home">Race Hub</a>
+    <a href="#circuit">Circuit</a>
+    <a href="#strategy">Strategy Lab</a>
+    <a href="#rookie">First Timer</a>
+    <a href="#prediction">My Picks</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid"></div>
+      <div class="hero-copy">
+        <div class="eyebrow">MALAYSIA · RACE WEEKEND · 02—04 OCT 2026</div>
+        <h1>WELCOME BACK<br><span>SEPANG.</span></h1>
+        <p class="hero-lead">A mobile-first race weekend companion for the circuit, the weather, the strategy and the fans.</p>
+        <div class="hero-actions">
+          <a href="#strategy" class="btn btn-primary">OPEN STRATEGY LAB</a>
+          <a href="#rookie" class="btn btn-ghost">FIRST F1 WEEKEND?</a>
+        </div>
+      </div>
+
+      <div class="race-card">
+        <div class="card-label">RACE SCENARIO</div>
+        <div class="weather-row">
+          <div>
+            <div class="weather-temp">31°</div>
+            <div class="weather-small">HOT / HUMID</div>
+          </div>
+          <div class="weather-icon">☂</div>
+        </div>
+        <div class="weather-line">
+          <span>RAIN RISK</span>
+          <strong>HIGH</strong>
+        </div>
+        <div class="meter"><i style="width:72%"></i></div>
+        <div class="weather-note">Tropical conditions can turn a normal race into a strategy fight.</div>
+      </div>
+
+      <div class="hero-ticker">
+        <span>SEPANG INTERNATIONAL CIRCUIT</span>
+        <span>WEATHER CAN CHANGE EVERYTHING</span>
+        <span>PLAN · LEARN · PREDICT</span>
+      </div>
+    </section>
+
+    <section class="weekend section-shell">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">01 / RACE HUB</div>
+          <h2>YOUR WEEKEND<br>AT A GLANCE</h2>
+        </div>
+        <p>Start simple. Know what day it is, what matters, and what to prepare for before you arrive.</p>
+      </div>
+
+      <div class="session-grid">
+        <article class="session-card">
+          <div class="session-day">FRI</div>
+          <div class="session-date">02 OCT</div>
+          <h3>PRACTICE</h3>
+          <p>Learn the circuit, watch long-run pace and see how teams react to the heat.</p>
+          <span class="chip">GET ORIENTED</span>
+        </article>
+
+        <article class="session-card highlight">
+          <div class="session-day">SAT</div>
+          <div class="session-date">03 OCT</div>
+          <h3>QUALIFYING</h3>
+          <p>One lap. Maximum attack. Track position can shape the whole Sunday strategy.</p>
+          <span class="chip">WATCH THE GAPS</span>
+        </article>
+
+        <article class="session-card">
+          <div class="session-day">SUN</div>
+          <div class="session-date">04 OCT</div>
+          <h3>RACE DAY</h3>
+          <p>Tyres, rain, overtakes and pit timing. This is where Sepang becomes unpredictable.</p>
+          <span class="chip">STRATEGY MODE</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="circuit section-shell" id="circuit">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">02 / CIRCUIT</div>
+          <h2>READ THE<br>TRACK</h2>
+        </div>
+        <p>Tap the circuit zones to understand where overtakes, braking and momentum matter.</p>
+      </div>
+
+      <div class="circuit-panel">
+        <div class="track-map">
+          <svg viewBox="0 0 560 320" role="img" aria-label="Stylized Sepang circuit map">
+            <path d="M92,201 C73,150 94,105 144,96 C198,86 246,114 276,75 C308,33 369,47 385,88 C403,135 358,160 390,197 C428,242 488,197 502,239 C515,278 450,294 391,279 C326,262 303,225 256,244 C204,265 115,262 92,201 Z"
+              class="track-outline"/>
+            <circle cx="126" cy="113" r="9" class="hotspot" data-zone="turn1"/>
+            <circle cx="365" cy="79" r="9" class="hotspot" data-zone="fast"/>
+            <circle cx="471" cy="235" r="9" class="hotspot" data-zone="final"/>
+            <circle cx="256" cy="244" r="9" class="hotspot" data-zone="rain"/>
+          </svg>
+          <div class="track-hint">TAP A GREEN MARKER</div>
+        </div>
+
+        <div class="track-info" id="trackInfo">
+          <div class="card-label">CIRCUIT NOTE</div>
+          <h3>TURN 1</h3>
+          <p>Heavy braking at the end of the main straight makes this one of the clearest overtaking opportunities.</p>
+          <div class="track-tags">
+            <span>BRAKING</span>
+            <span>OVERTAKE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="strategy section-shell" id="strategy">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">03 / STRATEGY LAB</div>
+          <h2>WHAT IF<br>IT RAINS?</h2>
+        </div>
+        <p>A fan-friendly simulator. Not real telemetry, just a simple way to understand how strategy can change.</p>
+      </div>
+
+      <div class="strategy-layout">
+        <form class="strategy-form" id="strategyForm">
+          <label>
+            TRACK CONDITION
+            <select id="trackCondition">
+              <option value="dry">Dry</option>
+              <option value="light">Light rain</option>
+              <option value="heavy">Heavy rain</option>
+            </select>
+          </label>
+
+          <label>
+            STARTING TYRE
+            <select id="startingTyre">
+              <option value="soft">Soft</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+              <option value="inter">Intermediate</option>
+            </select>
+          </label>
+
+          <label>
+            RAIN ARRIVAL
+            <select id="rainLap">
+              <option value="none">No rain expected</option>
+              <option value="10">Around lap 10</option>
+              <option value="25" selected>Around lap 25</option>
+              <option value="40">Around lap 40</option>
+            </select>
+          </label>
+
+          <button type="submit" class="btn btn-primary full">RUN SCENARIO</button>
+        </form>
+
+        <div class="strategy-result" id="strategyResult">
+          <div class="result-top">
+            <div>
+              <div class="card-label">FAN STRATEGY</div>
+              <h3>MEDIUM → INTERMEDIATE</h3>
+            </div>
+            <div class="risk">RISK <strong>MED</strong></div>
+          </div>
+
+          <div class="strategy-flow">
+            <div class="flow-step">
+              <span>START</span>
+              <strong>MEDIUM</strong>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-step">
+              <span>WATCH</span>
+              <strong>RAIN LAP 25</strong>
+            </div>
+            <div class="flow-line"></div>
+            <div class="flow-step">
+              <span>BOX</span>
+              <strong>LAP 23—27</strong>
+            </div>
+          </div>
+
+          <div class="engineer">
+            <span>RACE ENGINEER SAYS</span>
+            <p>Stay out while the dry tyre still works. If grip drops quickly, switch to intermediates before the field reacts.</p>
+          </div>
+          <small>Educational fan simulation only. Not official F1 or team strategy.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="rookie section-shell" id="rookie">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">04 / FIRST TIMER</div>
+          <h2>NEW TO F1?<br>START HERE.</h2>
+        </div>
+        <p>No jargon wall. Just the things that help a first-time fan understand what's happening at Sepang.</p>
+      </div>
+
+      <div class="rookie-grid">
+        <button class="rookie-card active" data-topic="drs">
+          <span>01</span>
+          <strong>WHAT IS DRS?</strong>
+        </button>
+        <button class="rookie-card" data-topic="qualifying">
+          <span>02</span>
+          <strong>WHY QUALIFYING?</strong>
+        </button>
+        <button class="rookie-card" data-topic="tyres">
+          <span>03</span>
+          <strong>WHY TYRES MATTER</strong>
+        </button>
+        <button class="rookie-card" data-topic="rain">
+          <span>04</span>
+          <strong>WHY SEPANG RAIN?</strong>
+        </button>
+      </div>
+
+      <div class="rookie-explainer" id="rookieExplainer">
+        <div class="big-num">01</div>
+        <div>
+          <h3>DRS HELPS OVERTAKING.</h3>
+          <p>Drivers can reduce rear-wing drag in designated situations, helping them gain speed on a straight and attack the car ahead.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="survival section-shell">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">05 / MALAYSIA MODE</div>
+          <h2>RACE DAY<br>SURVIVAL</h2>
+        </div>
+        <p>Because attending a race in Malaysia is not the same as watching one from the sofa.</p>
+      </div>
+
+      <div class="survival-grid">
+        <article><span>01</span><h3>HEAT</h3><p>Hydrate early, use sun protection and expect high humidity.</p></article>
+        <article><span>02</span><h3>RAIN</h3><p>A light poncho is more practical than relying only on an umbrella.</p></article>
+        <article><span>03</span><h3>WALKING</h3><p>Expect long walking distances between transport, gates and viewing zones.</p></article>
+        <article><span>04</span><h3>NETWORK</h3><p>Save your key information offline in case mobile networks get crowded.</p></article>
+      </div>
+    </section>
+
+    <section class="prediction section-shell" id="prediction">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">06 / FAN PICKS</div>
+          <h2>MAKE YOUR<br>SEPANG CALL.</h2>
+        </div>
+        <p>Pick your race outcome and generate a simple fan card you can screenshot and share.</p>
+      </div>
+
+      <div class="prediction-layout">
+        <form class="prediction-form" id="predictionForm">
+          <label>RACE WINNER
+            <input id="winner" type="text" placeholder="Driver name" maxlength="28"/>
+          </label>
+          <label>POLE POSITION
+            <input id="pole" type="text" placeholder="Driver name" maxlength="28"/>
+          </label>
+          <label>RAIN?
+            <select id="rainPick"><option>YES</option><option>NO</option></select>
+          </label>
+          <label>STRATEGY
+            <select id="stops"><option>1 STOP</option><option selected>2 STOP</option><option>3+ STOPS</option></select>
+          </label>
+          <button class="btn btn-primary full" type="submit">GENERATE CARD</button>
+        </form>
+
+        <div class="fan-card" id="fanCard">
+          <div class="fan-card-top">
+            <span>SEPANG//26</span>
+            <span>MY PICKS</span>
+          </div>
+          <div class="fan-main">
+            <div class="fan-label">RACE WINNER</div>
+            <div class="fan-value" id="cardWinner">YOUR PICK</div>
+          </div>
+          <div class="fan-row">
+            <div><span>POLE</span><strong id="cardPole">YOUR PICK</strong></div>
+            <div><span>RAIN</span><strong id="cardRain">YES</strong></div>
+            <div><span>STRATEGY</span><strong id="cardStops">2 STOP</strong></div>
+          </div>
+          <div class="fan-footer">UNOFFICIAL FAN COMPANION · MALAYSIA</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>SEPANG//26</strong>
+      <span>UNOFFICIAL FAN COMPANION</span>
+    </div>
+    <p>Fan-made concept. Not affiliated with Formula 1, FIA, any team, or Sepang International Circuit.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
