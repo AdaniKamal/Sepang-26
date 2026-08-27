@@ -176,70 +176,105 @@
 
       <div class="circuit-panel">
         <div class="track-map">
-          <svg viewBox="0 0 900 560" role="img" aria-label="Stylized Sepang International Circuit layout">
-            <!-- Original fan-made redraw based on the recognizable Sepang layout, not an official map asset. -->
+          <svg viewBox="0 0 1000 760" role="img" aria-label="Fan-made Sepang circuit redraw with turns 1 to 15 in reference order">
+            <!-- V8 redraw: turn positions follow the user-supplied Sepang reference. -->
             <path
-              d="M155 285
-                 L560 285
-                 C610 285 645 275 660 245
-                 C675 215 660 185 635 160
-                 L565 84
-                 C545 62 515 55 486 64
-                 C448 76 428 111 414 140
-                 C401 168 386 181 363 186
-                 C337 192 319 179 318 158
-                 C316 132 344 111 375 101
-                 C406 91 425 70 418 47
-                 C411 23 379 20 353 28
-                 L171 84
-                 C127 98 104 127 106 161
-                 C109 194 130 220 133 240
-                 C136 255 127 263 112 257
-                 C95 250 83 255 80 269
-                 C77 283 89 294 105 294
-                 L155 294
-                 C123 314 116 343 128 370
-                 C145 409 193 431 235 420
-                 C267 412 289 391 312 400
-                 C333 409 353 439 372 456
-                 C394 477 418 480 433 462
-                 C454 436 440 399 414 379
-                 C391 362 384 343 401 333
-                 C423 320 452 329 479 337
-                 C514 347 548 340 567 315
-                 C580 299 577 288 560 285"
+              d="M120 365
+                 C70 365 45 350 48 322
+                 C52 292 82 283 116 298
+                 C147 311 157 296 139 270
+                 C110 228 104 190 118 156
+                 C139 111 186 82 248 65
+                 L455 10
+                 C495 0 523 18 523 49
+                 C523 84 516 118 523 153
+                 C531 193 552 226 584 245
+                 C617 266 664 268 701 251
+                 C739 233 762 194 803 184
+                 C844 173 876 197 907 233
+                 L970 306
+                 C989 328 985 351 968 367
+                 C949 386 916 389 880 387
+                 L585 387
+                 C551 387 532 399 539 420
+                 C545 437 571 439 602 434
+                 C637 428 666 437 676 461
+                 C686 484 680 508 681 534
+                 C682 574 679 607 659 637
+                 C636 670 600 688 570 670
+                 C542 654 519 620 493 593
+                 L383 480
+                 C359 456 333 447 308 460
+                 C282 473 269 502 243 513
+                 C209 529 162 519 139 492
+                 C112 460 105 420 123 393
+                 C139 369 159 360 189 359
+                 L868 359
+                 C898 359 915 345 916 326
+                 C917 308 904 292 884 278
+                 L830 240
+                 C807 224 785 221 763 230
+                 C740 240 720 266 696 281
+                 C671 297 640 299 614 287
+                 C588 276 573 258 562 236
+                 C551 214 546 189 547 162
+                 C548 136 544 114 536 96
+                 C527 77 510 65 487 65
+                 L268 124
+                 C215 138 176 159 154 192
+                 C134 221 132 248 147 275
+                 C161 301 159 326 143 344
+                 C136 352 128 359 120 365"
               class="track-outline"
             />
 
-            <path d="M160 303 L550 303" class="pit-lane"/>
-            <line x1="470" y1="280" x2="470" y2="309" class="start-line"/>
-            <line x1="480" y1="280" x2="480" y2="309" class="start-line alt"/>
+            <path d="M142 377 L854 377" class="pit-lane"/>
+            <line x1="305" y1="350" x2="305" y2="385" class="start-line"/>
+            <line x1="318" y1="350" x2="318" y2="385" class="start-line alt"/>
 
-            <circle cx="142" cy="292" r="10" class="hotspot" data-zone="turn1"/>
-            <circle cx="129" cy="372" r="10" class="hotspot" data-zone="turn2"/>
-            <circle cx="234" cy="420" r="10" class="hotspot" data-zone="turn3"/>
-            <circle cx="360" cy="446" r="10" class="hotspot" data-zone="turn4"/>
-            <circle cx="427" cy="374" r="10" class="hotspot" data-zone="turn5"/>
-            <circle cx="551" cy="316" r="10" class="hotspot" data-zone="turn6"/>
-            <circle cx="654" cy="247" r="10" class="hotspot" data-zone="turn7"/>
-            <circle cx="617" cy="144" r="10" class="hotspot" data-zone="turn8"/>
-            <circle cx="505" cy="66" r="10" class="hotspot" data-zone="turn9"/>
-            <circle cx="414" cy="143" r="10" class="hotspot" data-zone="turn10"/>
-            <circle cx="330" cy="180" r="10" class="hotspot" data-zone="turn11"/>
-            <circle cx="371" cy="99" r="10" class="hotspot" data-zone="turn12"/>
-            <circle cx="263" cy="57" r="10" class="hotspot" data-zone="turn13"/>
-            <circle cx="111" cy="162" r="10" class="hotspot" data-zone="turn14"/>
-            <circle cx="106" cy="269" r="10" class="hotspot" data-zone="turn15"/>
+            <!-- Turn order exactly follows supplied reference image -->
+            <circle cx="72" cy="365" r="10" class="hotspot" data-zone="turn1"/>
+            <circle cx="112" cy="298" r="10" class="hotspot" data-zone="turn2"/>
+            <circle cx="168" cy="150" r="10" class="hotspot" data-zone="turn3"/>
+            <circle cx="494" cy="36" r="10" class="hotspot" data-zone="turn4"/>
+            <circle cx="634" cy="260" r="10" class="hotspot" data-zone="turn5"/>
+            <circle cx="815" cy="195" r="10" class="hotspot" data-zone="turn6"/>
+            <circle cx="962" cy="323" r="10" class="hotspot" data-zone="turn7"/>
+            <circle cx="953" cy="387" r="10" class="hotspot" data-zone="turn8"/>
+            <circle cx="581" cy="425" r="10" class="hotspot" data-zone="turn9"/>
+            <circle cx="655" cy="482" r="10" class="hotspot" data-zone="turn10"/>
+            <circle cx="600" cy="670" r="10" class="hotspot" data-zone="turn11"/>
+            <circle cx="347" cy="474" r="10" class="hotspot" data-zone="turn12"/>
+            <circle cx="207" cy="515" r="10" class="hotspot" data-zone="turn13"/>
+            <circle cx="129" cy="468" r="10" class="hotspot" data-zone="turn14"/>
+            <circle cx="132" cy="360" r="10" class="hotspot" data-zone="turn15"/>
 
-            <text x="478" y="265" class="track-label">START / FINISH</text>
-            <text x="370" y="324" class="track-label muted">PIT LANE</text>
+            <g class="turn-numbers" aria-hidden="true">
+              <text x="54" y="399">1</text>
+              <text x="91" y="286">2</text>
+              <text x="151" y="138">3</text>
+              <text x="480" y="24">4</text>
+              <text x="618" y="246">5</text>
+              <text x="801" y="181">6</text>
+              <text x="974" y="316">7</text>
+              <text x="965" y="411">8</text>
+              <text x="566" y="452">9</text>
+              <text x="640" y="510">10</text>
+              <text x="584" y="702">11</text>
+              <text x="332" y="505">12</text>
+              <text x="192" y="545">13</text>
+              <text x="106" y="489">14</text>
+              <text x="111" y="346">15</text>
+            </g>
+
+            <text x="325" y="338" class="track-label">START / FINISH</text>
+            <text x="470" y="402" class="track-label muted">PIT LANE</text>
           </svg>
           <div class="track-legend">
             <span><i class="legend-dot"></i> TAP T1–T15</span>
             <span>5.542 KM · 15 TURNS</span>
           </div>
         </div>
-
         <div class="track-info" id="trackInfo">
           <div class="card-label">CIRCUIT NOTE</div>
           <h3>TURN 1</h3>

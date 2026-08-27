@@ -11,21 +11,21 @@ mobileNav.querySelectorAll("a").forEach(a => {
 });
 
 const trackData = {
-  turn1:{title:"TURN 1",body:"Heavy braking after the main straight. One of Sepang’s key opening-lap and overtaking zones.",tags:["BRAKING","OVERTAKE"]},
-  turn2:{title:"TURN 2",body:"A tight follow-up corner. Drivers must balance rotation with a clean exit into the next section.",tags:["TRACTION","EXIT"]},
-  turn3:{title:"TURN 3",body:"A faster flowing section where momentum matters more than a single braking point.",tags:["FLOW","BALANCE"]},
-  turn4:{title:"TURN 4",body:"A slower corner after a faster approach. Braking stability and traction matter here.",tags:["BRAKING","TRACTION"]},
-  turn5:{title:"TURN 5",body:"Part of Sepang’s flowing middle sector. Smooth steering helps protect tyre temperature and balance.",tags:["FLOW","TYRES"]},
-  turn6:{title:"TURN 6",body:"Another rhythm corner where carrying speed without overheating the tyres can pay off later.",tags:["RHYTHM","TYRES"]},
-  turn7:{title:"TURN 7",body:"A technical change of direction. Drivers need confidence in the front end without compromising the next corner.",tags:["TECHNICAL","BALANCE"]},
-  turn8:{title:"TURN 8",body:"A medium-speed section where line choice matters, especially if grip changes with rain.",tags:["LINE","GRIP"]},
-  turn9:{title:"TURN 9",body:"A slower uphill-style corner in the classic Sepang rhythm. Easy place to lose momentum.",tags:["SLOW","TRACTION"]},
-  turn10:{title:"TURN 10",body:"Acceleration zone where drivers build speed into the next sequence.",tags:["ACCELERATION","SETUP"]},
-  turn11:{title:"TURN 11",body:"A technical corner requiring patience on entry and strong traction on exit.",tags:["TECHNICAL","EXIT"]},
-  turn12:{title:"TURN 12",body:"Fast direction change. Confidence and aero balance become more important here.",tags:["HIGH SPEED","AERO"]},
-  turn13:{title:"TURN 13",body:"Part of the run toward the closing sector. Small mistakes can compromise the next braking zone.",tags:["PRECISION","FLOW"]},
-  turn14:{title:"TURN 14",body:"A critical setup corner before the final run. Good exit speed matters for positioning.",tags:["SETUP","EXIT SPEED"]},
-  turn15:{title:"TURN 15",body:"The final corner feeds the main straight. A clean exit can create an attack into Turn 1.",tags:["FINAL CORNER","OVERTAKE"]}
+  turn1:{title:"TURN 1",body:"Opening corner at the end of the main straight. Heavy braking and traffic make this an important race-start zone.",tags:["BRAKING","START"]},
+  turn2:{title:"TURN 2",body:"A tight follow-up corner immediately after Turn 1. Exit positioning matters for the run into the next section.",tags:["TRACTION","EXIT"]},
+  turn3:{title:"TURN 3",body:"A long sweeping section where drivers carry speed and build momentum toward Turn 4.",tags:["SWEEP","MOMENTUM"]},
+  turn4:{title:"TURN 4",body:"A distinct change of direction at the top of the circuit layout, setting up the descent into the next sequence.",tags:["DIRECTION","SETUP"]},
+  turn5:{title:"TURN 5",body:"Part of the flowing upper-middle section. Smooth line choice helps preserve speed into Turn 6.",tags:["FLOW","LINE"]},
+  turn6:{title:"TURN 6",body:"A fast-looking bend in the upper-right section of the circuit, linking into the long run toward Turn 7.",tags:["SPEED","FLOW"]},
+  turn7:{title:"TURN 7",body:"The first corner of the right-side complex. Braking and positioning are important before Turn 8.",tags:["BRAKING","POSITION"]},
+  turn8:{title:"TURN 8",body:"A second corner in the right-side complex that sends the car back across the circuit toward Turn 9.",tags:["EXIT","TRANSITION"]},
+  turn9:{title:"TURN 9",body:"A tight inward corner in the lower-right-middle section. Drivers need controlled entry and clean traction.",tags:["TIGHT","TRACTION"]},
+  turn10:{title:"TURN 10",body:"A follow-on corner after Turn 9 that feeds the long lower section of the lap.",tags:["FLOW","EXIT"]},
+  turn11:{title:"TURN 11",body:"The lowest point of the circuit layout, a major direction change before the run back toward Turns 12–14.",tags:["DIRECTION","LOWER SECTOR"]},
+  turn12:{title:"TURN 12",body:"A corner in the lower-left return section, setting up the next sequence.",tags:["SETUP","RETURN"]},
+  turn13:{title:"TURN 13",body:"A further bend in the lower-left section where maintaining rhythm helps into Turn 14.",tags:["RHYTHM","FLOW"]},
+  turn14:{title:"TURN 14",body:"The final lower-left corner before the circuit reconnects toward the last turn.",tags:["SETUP","FINAL SECTOR"]},
+  turn15:{title:"TURN 15",body:"The final corner before the main straight. Exit speed is important for the run back to Turn 1.",tags:["FINAL CORNER","EXIT SPEED"]}
 };
 
 document.querySelectorAll(".hotspot").forEach(h => {

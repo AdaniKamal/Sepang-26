@@ -14,7 +14,8 @@ A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project
 | **V4** | Previous | Fixed fan-card action contrast and improved hover/focus readability. |
 | **V5** | Previous | Integrated official Malaysian weather data from MET Malaysia via data.gov.my, added a 7-day Sepang forecast, relevant warning detection, Fan Ready recommendations, weather-to-Strategy-Lab handoff, API fallback states and mobile weather layouts. |
 | **V6** | Previous | Made the hero weather card interactive with compact and expanded states, added Weather to the menu, converted the 7-day forecast into a swipeable/arrow carousel, highlighted Today, and refined mobile interaction for touch screens. |
-| **V7** | **Current** | Fixed duplicate weather dates by deduplicating API results before rendering, ensuring one forecast card per calendar day. Also simplified the Weather section copy by removing the race-weekend-window sentence. |
+| **V7** | Previous | Fixed duplicate weather dates by deduplicating API results before rendering, ensuring one forecast card per calendar day. Also simplified the Weather section copy by removing the race-weekend-window sentence. |
+| **V8** | **Current** | Corrected a major circuit-data issue: rebuilt the Sepang circuit redraw so Turn 1–15 positions follow the supplied reference order, added visible turn numbers on the map, and replaced earlier over-specific turn descriptions with conservative geometry-based notes. |
 
 ## Current features
 
@@ -106,3 +107,10 @@ The circuit illustration is an original fan-made redraw intended to evoke the re
 Before final bounty submission, race session times, transport, venue facilities and other event-specific information should be validated against authoritative sources.
 
 The project intentionally avoids official Formula 1 logos, team logos and copied Formula 1 UI.
+
+
+## Circuit reference correction
+
+V8 corrects the earlier circuit-turn mapping. The Turn 1–15 order in the interactive circuit view was rebuilt against the Sepang reference image supplied during development.
+
+The circuit remains an original fan-made redraw for this project rather than a copied official map asset.

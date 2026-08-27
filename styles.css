@@ -884,3 +884,19 @@ footer span{font-family:"IBM Plex Mono";font-size:9px}
     text-align:left;
   }
 }
+
+
+/* V8 — corrected Sepang turn order */
+.turn-numbers text{
+  fill:var(--cream);
+  font-family:"IBM Plex Mono";
+  font-size:16px;
+  font-weight:800;
+  paint-order:stroke;
+  stroke:#0a0a0a;
+  stroke-width:4px;
+  stroke-linejoin:round;
+}
+@media(max-width:620px){
+  .turn-numbers text{font-size:22px;stroke-width:5px}
+}
