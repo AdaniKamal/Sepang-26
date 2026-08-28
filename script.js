@@ -723,3 +723,54 @@ setInterval(updateNextRaceDayMilestone, 60000);
 setTimeout(syncRaceDayWeather, 1600);
 setTimeout(syncRaceDayWeather, 4000);
 setInterval(syncRaceDayWeather, 60000);
+
+
+// ===== V11.1: First Timer — mobile inline answers =====
+function renderMobileRookieTopic(topic) {
+  if (window.innerWidth > 620 || typeof rookieTopics === "undefined") return;
+
+  const data = rookieTopics[topic];
+  if (!data) return;
+
+  document.querySelectorAll(".rookie-mobile-explainer").forEach(panel => {
+    panel.classList.remove("open");
+    panel.innerHTML = "";
+  });
+
+  const panel = document.querySelector(`[data-mobile-topic="${topic}"]`);
+  if (!panel) return;
+
+  panel.innerHTML = `
+    <div class="big-num">${data.num}</div>
+    <div>
+      <h3>${data.title}</h3>
+      <p>${data.body}</p>
+    </div>
+  `;
+  panel.classList.add("open");
+}
+
+document.querySelectorAll(".rookie-card").forEach(card => {
+  card.addEventListener("click", () => {
+    if (window.innerWidth <= 620) {
+      renderMobileRookieTopic(card.dataset.topic);
+    }
+  });
+});
+
+// Keep the first answer visible on initial mobile load.
+if (window.innerWidth <= 620) {
+  renderMobileRookieTopic("drs");
+}
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth <= 620) {
+    const active = document.querySelector(".rookie-card.active")?.dataset.topic || "drs";
+    renderMobileRookieTopic(active);
+  } else {
+    document.querySelectorAll(".rookie-mobile-explainer").forEach(panel => {
+      panel.classList.remove("open");
+      panel.innerHTML = "";
+    });
+  }
+});

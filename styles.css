@@ -1175,3 +1175,65 @@ footer span{font-family:"IBM Plex Mono";font-size:9px}
   .race-day-actions{grid-template-columns:1fr}
   .race-day-side{grid-template-columns:1fr}
 }
+
+
+/* V11.1 — First Timer mobile interaction */
+.rookie-mobile-explainer{
+  display:none;
+}
+
+@media(max-width:620px){
+  .rookie-grid{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+
+  .rookie-card{
+    width:100%;
+    min-height:118px;
+    margin-top:10px;
+  }
+
+  .rookie-mobile-explainer{
+    display:none;
+    width:100%;
+    padding:22px 18px;
+    background:linear-gradient(110deg,#fff0dc,#ffd08b);
+    color:#0a0a0a;
+    border:1px solid rgba(255,107,0,.45);
+  }
+
+  .rookie-mobile-explainer.open{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:16px;
+    align-items:start;
+  }
+
+  .rookie-mobile-explainer .big-num{
+    font-family:"Archivo Black";
+    font-size:54px;
+    line-height:.9;
+  }
+
+  .rookie-mobile-explainer h3{
+    margin:0 0 10px;
+    font-family:"Archivo Black";
+    font-size:23px;
+    line-height:1.05;
+  }
+
+  .rookie-mobile-explainer p{
+    margin:0;
+    font-size:14px;
+    line-height:1.55;
+    color:#252525;
+  }
+
+  /* Desktop explainer is redundant on phone because the answer now opens
+     immediately beneath the selected question. */
+  #rookieExplainer{
+    display:none;
+  }
+}

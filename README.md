@@ -17,7 +17,7 @@ A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project
 | **V7** | Previous | Fixed duplicate weather dates by deduplicating API results before rendering, ensuring one forecast card per calendar day. Also simplified the Weather section copy by removing the race-weekend-window sentence. |
 | **V8** | Previous | Corrected the earlier circuit-data issue and rebuilt the turn mapping against the supplied Sepang reference. |
 | **V9** | Previous | Refined the circuit and added the D-1 countdown. |
-| **V10** | Previous | Rebuilt the circuit again against the latest supplied Sepang reference image and added a mobile-friendly turn selector. |\n| **V11** | **Current** | Added a dedicated Race Day Companion dashboard that consolidates D-1 countdown, MYT clock, MET Malaysia weather, Fan Ready guidance, next race-weekend milestone, Track Watch notes, warning status and quick links into one phone-first view. |
+| **V10** | Previous | Rebuilt the circuit again against the latest supplied Sepang reference image and added a mobile-friendly turn selector. |\n| **V11** | Previous | Added a dedicated Race Day Companion dashboard that consolidates D-1 countdown, MYT clock, MET Malaysia weather, Fan Ready guidance, next race-weekend milestone, Track Watch notes, warning status and quick links into one phone-first view. |
 
 ## Current features
 
