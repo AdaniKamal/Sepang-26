@@ -1237,3 +1237,51 @@ footer span{font-family:"IBM Plex Mono";font-size:9px}
     display:none;
   }
 }
+
+
+/* V11.2 — Weekend cards mobile spacing fix */
+@media(max-width:620px){
+  .session-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .session-card{
+    min-height:0;
+    height:auto;
+    padding:22px 20px;
+    display:flex;
+    flex-direction:column;
+    overflow:visible;
+  }
+
+  .session-card h3{
+    margin:44px 0 14px;
+  }
+
+  .session-card p{
+    margin:0;
+    line-height:1.6;
+    padding-bottom:0;
+  }
+
+  /* On desktop the chip is pinned to the bottom.
+     On phone this caused it to overlap the paragraph. */
+  .session-card .chip{
+    position:static;
+    left:auto;
+    bottom:auto;
+    align-self:flex-start;
+    margin-top:18px;
+    margin-bottom:0;
+  }
+
+  .session-day{
+    line-height:1;
+  }
+
+  .session-date{
+    margin-top:8px;
+  }
+}

@@ -8,19 +8,19 @@ A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project
 
 | Version | Status | Main changes |
 |---|---|---|
-| **V1** | Previous | First working race hub, generic circuit interaction, Strategy Lab, First Timer mode, Malaysia survival guide and prediction card. |
-| **V2** | Previous | Replaced the portfolio-like acid-green palette with a distinct Sepang sunrise direction: racing red, hot orange, amber, warm cream and asphalt black. |
-| **V3** | Previous | Redrew the circuit into a recognizable Sepang-style 15-turn silhouette, improved mobile responsiveness, added full T1–T15 interactions, and added PNG download + native social sharing for the fan prediction card. |
-| **V4** | Previous | Fixed fan-card action contrast and improved hover/focus readability. |
-| **V5** | Previous | Integrated official Malaysian weather data from MET Malaysia via data.gov.my, added a 7-day Sepang forecast, relevant warning detection, Fan Ready recommendations, weather-to-Strategy-Lab handoff, API fallback states and mobile weather layouts. |
-| **V6** | Previous | Made the hero weather card interactive with compact and expanded states, added Weather to the menu, converted the 7-day forecast into a swipeable/arrow carousel, highlighted Today, and refined mobile interaction for touch screens. |
-| **V7** | Previous | Fixed duplicate weather dates by deduplicating API results before rendering, ensuring one forecast card per calendar day. Also simplified the Weather section copy by removing the race-weekend-window sentence. |
-| **V8** | Previous | Corrected the earlier circuit-data issue and rebuilt the turn mapping against the supplied Sepang reference. |
-| **V9** | Previous | Refined the circuit and added the D-1 countdown. |
-| **V10** | Previous | Rebuilt the circuit again against the latest supplied Sepang reference image and added a mobile-friendly turn selector. |\n| **V11** | Previous | Added a dedicated Race Day Companion dashboard that consolidates D-1 countdown, MYT clock, MET Malaysia weather, Fan Ready guidance, next race-weekend milestone, Track Watch notes, warning status and quick links into one phone-first view. |
-| **V11** |	Previous	| Added Race Day Companion dashboard |
-| **V11.1** |	Current |	Improved First Timer mobile interaction and removed “No jargon wall |
-
+| V1 | Previous | First working race hub, generic circuit interaction, Strategy Lab, First Timer mode, Malaysia survival guide and prediction card. |
+| V2 | Previous | Replaced the original acid-green palette with the Sepang sunrise direction: racing red, hot orange, amber, warm cream and asphalt black. |
+| V3 | Previous | Added the Sepang-style circuit redraw, mobile responsiveness, T1–T15 interactions, and PNG download/native sharing for the fan prediction card. |
+| V4 | Previous | Fixed fan-card action contrast and improved hover/focus readability. |
+| V5 | Previous | Integrated MET Malaysia weather data via data.gov.my, 7-day forecast, warning detection, Fan Ready recommendations and weather-to-Strategy-Lab handoff. |
+| V6 | Previous | Made the hero weather card interactive, added Weather to the menu and converted the 7-day forecast into a swipeable carousel. |
+| V7 | Previous | Fixed duplicate forecast dates and simplified the Weather section copy. |
+| V8 | Previous | Corrected the circuit turn mapping against the supplied Sepang reference. |
+| V9 | Previous | Refined the circuit and added the live D-1 countdown. |
+| V10 | Previous | Rebuilt the circuit against the latest supplied reference and added a mobile-friendly turn selector. |
+| V11 | Previous | Added the Race Day Companion dashboard. |
+| V11.1 | Previous | Improved First Timer mobile UX so each answer opens directly below the selected topic; removed “No jargon wall.” |
+| V11.2 | Current | Fixed mobile Weekend session cards so the action chips no longer overlap the descriptive text. |
 ## Current features
 
 - Mobile-first race weekend homepage
