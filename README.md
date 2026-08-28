@@ -18,18 +18,20 @@ A mobile-first fan web app concept for the KRACKEDEVS Sepang bounty. The project
 | **V8** | Previous | Corrected the earlier circuit-data issue and rebuilt the turn mapping against the supplied Sepang reference. |
 | **V9** | Previous | Refined the circuit and added the D-1 countdown. |
 | **V10** | Previous | Rebuilt the circuit again against the latest supplied Sepang reference image and added a mobile-friendly turn selector. |\n| **V11** | Previous | Added a dedicated Race Day Companion dashboard that consolidates D-1 countdown, MYT clock, MET Malaysia weather, Fan Ready guidance, next race-weekend milestone, Track Watch notes, warning status and quick links into one phone-first view. |
+| **V11** |	Previous	| Added Race Day Companion dashboard |
+| **V11.1** |	Current |	Improved First Timer mobile interaction and removed “No jargon wall |
 
 ## Current features
 
 - Mobile-first race weekend homepage
 - Fan-made Sepang circuit redraw
 - Interactive Turn 1–15 circuit notes
-- **MET Malaysia / data.gov.my Sepang forecast**
-- **7-day weather outlook in a swipeable carousel**
-- **Morning, afternoon and night forecast**
-- **Relevant Selangor / Sepang weather warning detection**
-- **Fan Ready guidance based on forecast conditions**
-- **Send current weather scenario into Strategy Lab**
+- MET Malaysia / data.gov.my Sepang forecast
+- 7-day weather outlook in a swipeable carousel
+- Morning, afternoon and night forecast
+- Relevant Selangor / Sepang weather warning detection
+- Fan Ready guidance based on forecast conditions
+- Send current weather scenario into Strategy Lab
 - Fan strategy simulator
 - Beginner-friendly F1 explainer
 - Malaysia-specific heat, rain, walking and connectivity guidance
